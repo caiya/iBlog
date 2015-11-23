@@ -6,6 +6,7 @@ module:testrunner
 
 GET     /                                       App.Index
 GET     /blog                                  App.Blog
+POST     /save                                  WBlog.Save
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

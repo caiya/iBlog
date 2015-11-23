@@ -1,9 +1,9 @@
 package modules
 
 import (
-	"fmt"
+	//	"fmt"
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
+	//	"gopkg.in/mgo.v2/bson"
 )
 
 const (
@@ -16,8 +16,8 @@ type Dao struct {
 	session *mgo.Session
 }
 
-func Conn() (*Dao, err) {
-	session, err = mgo.Dial("localhost")
+func Conn() (*Dao, error) {
+	session, err := mgo.Dial("localhost")
 	if err != nil {
 		return nil, err
 	}
