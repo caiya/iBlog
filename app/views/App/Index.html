@@ -1,6 +1,23 @@
-{{set . "title" "iBlog博客"}}
-{{set . "home" "active" }}
-{{template "header.html" .}}
-<div class="container-fluid" style="margin-top:0px;">
-<div class="row-fluid" style="margin-left:5px;margin-top:0px;">
-<div class="span12" margin-top="200px;">{{template "left.html" .}}</div>
+<!DOCTYPE html>
+<html>
+  <head>
+	{{set . "title" "iBlog博客"}}
+	{{set . "home" "active" }}
+    <title>{{.title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
+	<link href="/public/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/public/css/header.css" rel="stylesheet">
+	<link href="/public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/public/bootstrap/css/jquery-confirm.css" rel="stylesheet">
+    <script src="/public/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/public/bootstrap/js/bootstrap.js"></script>
+	<script src="/public/bootstrap/js/jquery-confirm.js"></script>
+  </head>
+  <body>
+	{{template "header.html" .}}
+	<div class="container-fluid" style="margin-top:0px;">
+	<div class="row-fluid" style="margin-left:5px;margin-top:0px;">
+	<div class="span12" margin-top="200px;">{{template "left.html" .}}</div>
+  </body>
+</html>

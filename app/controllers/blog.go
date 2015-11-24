@@ -13,7 +13,6 @@ type WBlog struct {
 
 func (c WBlog) Save(blog *modules.Blog) revel.Result {
 	blog.Title = strings.TrimSpace(blog.Title)
-	blog.Email = strings.TrimSpace(blog.Email)
 	blog.Content = strings.TrimSpace(blog.Content)
 	blog.Validate(c.Validation)
 	if c.Validation.HasErrors() {

@@ -8,23 +8,22 @@ import (
 )
 
 type Blog struct {
-	Id      bson.ObjectId
-	Email   string
 	CDate   time.Time
 	Title   string
 	Content string
 	ReadCnt int
-	Url     string
 	Year    int
 }
 
 //新建博客
 func (dao *Dao) CreateBlog(blog *Blog) error {
 	blogConnection := dao.session.DB(DbName).C(BlogConnection)
-	blog.Id = bson.NewObjectId()
 	blog.CDate = time.Now()
 	blog.Year = blog.CDate.Year()
-	_, err := blogConnection.Upsert(bson.M{"_id": blog.Id}, blog) //先根据Id查找，然后更新或插入
+	blog.ReadCnt = 0
+	blog.CDate = time.Now()
+	blog.Year = blog.CDate.Year()
+	err := blogConnection.Insert(blog) //先根据Id查找，然后更新或插入
 	if err != nil {
 		revel.WARN.Printf("Unable to save blog:%v error % v", blog, err)
 	}
@@ -40,8 +39,8 @@ func (dao *Dao) FindBlogs() []Blog {
 	return blogs
 }
 
+//前台数据提交校验
 func (blog *Blog) Validate(v *revel.Validation) {
 	v.Check(blog.Title, revel.Required{}, revel.MinSize{1}, revel.MaxSize{200})
-	//	v.Email(blog.Email)
 	v.Check(blog.Content, revel.Required{}, revel.MinSize{1})
 }
