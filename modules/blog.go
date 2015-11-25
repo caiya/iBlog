@@ -13,6 +13,7 @@ type Blog struct {
 	Content string
 	ReadCnt int
 	Year    int
+	Author  string
 }
 
 //新建博客
@@ -22,12 +23,29 @@ func (dao *Dao) CreateBlog(blog *Blog) error {
 	blog.Year = blog.CDate.Year()
 	blog.ReadCnt = 0
 	blog.CDate = time.Now()
+	blog.Author = "匿名"
 	blog.Year = blog.CDate.Year()
 	err := blogConnection.Insert(blog) //先根据Id查找，然后更新或插入
 	if err != nil {
 		revel.WARN.Printf("Unable to save blog:%v error % v", blog, err)
 	}
 	return err
+}
+
+//获取Title
+func (blog *Blog) GetTitle() string {
+	if len(blog.Title) > 100 {
+		return blog.Title[:100]
+	}
+	return blog.Title
+}
+
+//获取Content
+func (blog *Blog) GetContent() string {
+	if len(blog.Content) > 500 {
+		return blog.Content[:500]
+	}
+	return blog.Content
 }
 
 //查询所有博客
