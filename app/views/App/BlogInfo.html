@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	{{set . "title" "iBlog博客"}}
+	{{set . "title" "博客详情"}}
 	{{set . "home" "active" }}
     <title>{{.title}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,27 +16,6 @@
   </head>
   <body>
 	{{template "header.html" .}}
-	<div class="container-fluid" style="margin-top:0px;">
-	<div class="row-fluid" style="margin-left:5px;margin-top:0px;">
-	<div class="span12" margin-top="200px;">
-	{{if .blogs}}
-		{{range $blog := .blogs}}
-			<div style="margin-left:5px;" class="span12">
-				<ul class="thumbnails">
-					<li >
-				       <div class="caption" >
-				         <h3>{{$blog.GetTitle}}</h3>
-						<span class="label label-default">作者：{{$blog.Author}}</span>
-	   					 <span class="label label-info">日期：{{$blog.CDate.Format "2006-01-02 15:04"}}</span>
-						 <span class="label label-success">阅读：{{$blog.ReadCnt}}</span>
-				         <p>{{$blog.GetContent}}</p>
-				       </div>
-		   			</li>
-		 		</ul>        
-			</div>
-		{{end}}
-	{{end}}
-	</div>
 	{{template "footer.html" .}}
   </body>
 </html>

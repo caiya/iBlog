@@ -23,3 +23,7 @@ func (c App) Index() revel.Result {
 func (c App) Blog() revel.Result {
 	return c.Render()
 }
+
+func (c App) BlogInfo() revel.Result {
+	return c.Render()
+}

@@ -1,6 +1,7 @@
 package modules
 
 import (
+	"fmt"
 	"github.com/revel/revel"
 	//	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -54,6 +55,7 @@ func (dao *Dao) FindBlogs() []Blog {
 	blogs := []Blog{}
 	query := blogConnection.Find(bson.M{}).Sort("-cdate").Limit(50) //结果根据cdate倒序
 	query.All(&blogs)
+	fmt.Println(blogs)
 	return blogs
 }
 
