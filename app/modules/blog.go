@@ -1,7 +1,6 @@
 package modules
 
 import (
-	"fmt"
 	"github.com/revel/revel"
 	//	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -9,6 +8,7 @@ import (
 )
 
 type Blog struct {
+	Id_     string `bson:"_id"`
 	CDate   time.Time
 	Title   string
 	Content string
@@ -24,6 +24,7 @@ func (dao *Dao) CreateBlog(blog *Blog) error {
 	blog.Year = blog.CDate.Year()
 	blog.ReadCnt = 0
 	blog.CDate = time.Now()
+	blog.Id_ = bson.NewObjectId().Hex()
 	blog.Author = "匿名"
 	blog.Year = blog.CDate.Year()
 	err := blogConnection.Insert(blog) //先根据Id查找，然后更新或插入
@@ -55,7 +56,6 @@ func (dao *Dao) FindBlogs() []Blog {
 	blogs := []Blog{}
 	query := blogConnection.Find(bson.M{}).Sort("-cdate").Limit(50) //结果根据cdate倒序
 	query.All(&blogs)
-	fmt.Println(blogs)
 	return blogs
 }
 
