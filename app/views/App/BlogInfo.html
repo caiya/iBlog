@@ -16,6 +16,26 @@
   </head>
   <body>
 	{{template "header.html" .}}
+	<div style="margin-left:5px;" class="span12">
+		{{if .blog}}
+		<div class="content">
+			<ul class="thumbnails">
+				<li>
+					<div class="caption" >
+				         <h3>{{.blog.Title}}</h3>
+						 <span class="label label-default">作者：{{.blog.Author}}</span>
+		  				 <span class="label label-info">日期：{{.blog.CDate.Format "2006-01-02 15:04"}}</span>
+						 <span class="label label-success">阅读：{{.blog.ReadCnt}}</span>
+					</div>
+			   	</li>
+			</ul> 
+			<p>{{.blog.Content}}</p>
+		</div>
+		<div class="comment">
+			
+		</div>
+		{{end}}
+	</div>
 	{{template "footer.html" .}}
   </body>
 </html>

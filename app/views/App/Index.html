@@ -10,6 +10,11 @@
 	<link href="/public/css/header.css" rel="stylesheet">
 	<link href="/public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="/public/bootstrap/css/jquery-confirm.css" rel="stylesheet">
+	<style type="text/css">
+		.thumbnails > li {
+    		margin-left: 0px; 
+		}
+	</style>
     <script src="/public/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/public/bootstrap/js/bootstrap.js"></script>
 	<script src="/public/bootstrap/js/jquery-confirm.js"></script>
@@ -17,15 +22,15 @@
   <body>
 	{{template "header.html" .}}
 	<div class="container-fluid" style="margin-top:0px;">
-	<div class="row-fluid" style="margin-left:5px;margin-top:0px;">
+	<div class="row-fluid" style="margin-left:0px;margin-top:0px;">
 	<div class="span12" margin-top="200px;">
 	{{if .blogs}}
 		{{range $blog := .blogs}}
-			<div style="margin-left:5px;" class="span12">
+			<div style="margin-left:0px;" class="span12">
 				<ul class="thumbnails">
 					<li >
 				       <div class="caption" >
-				        <h3><a style="color:#000" href="/bloginfo/{{$blog.Id_}}">{{$blog.GetTitle }}</a></h3>
+				        <h3><a style="color:#000" href="/bloginfo/{{$blog.Id_}}/{{$blog.ReadCnt}}">{{$blog.GetTitle }}</a></h3>
 						<span class="label label-default">作者：{{$blog.Author}}</span>
 	   					 <span class="label label-info">日期：{{$blog.CDate.Format "2006-01-02 15:04"}}</span>
 						 <span class="label label-success">阅读：{{$blog.ReadCnt}}</span>

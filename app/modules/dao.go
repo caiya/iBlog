@@ -1,15 +1,14 @@
 package modules
 
 import (
-	//	"fmt"
 	"gopkg.in/mgo.v2"
-	//	"gopkg.in/mgo.v2/bson"
 )
 
 const (
-	DbName         = "blog"
-	UserConnection = "user"
-	BlogConnection = "blog"
+	DbName            = "blog"
+	UserCollection    = "user"
+	BlogCollection    = "blog"
+	CommentCollection = "comment"
 )
 
 type Dao struct {

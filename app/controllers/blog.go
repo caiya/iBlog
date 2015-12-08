@@ -8,7 +8,7 @@ import (
 )
 
 type WBlog struct {
-	App
+	App //结构体包含
 }
 
 func (c WBlog) Save(blog *modules.Blog) revel.Result {
